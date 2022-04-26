@@ -3,7 +3,7 @@ from PyQt6 import QtWidgets as qtw
 from PyQt6 import QtCore as qtc
 from PyQt6 import QtGui as qtg
 
-from demoApp.ui.loginForm import LoginForm
+from LoginForm import LoginForm
 
 class MainWindow(qtw.QWidget):
 
