@@ -1,7 +1,5 @@
-from PyQt6 import QtWidgets as qtw
 from PyQt6 import QtCore as qtc
-from PyQt6 import QtGui as qtg
-from SimpleLoginForm.Ui_form import Ui_Form
+from Ui_form import Ui_Form
 
 class LoginForm(Ui_Form):
 

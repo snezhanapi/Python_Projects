@@ -1,12 +1,13 @@
 import sys
 from PyQt6 import QtWidgets as qtw
-from SimpleLoginForm.loginForm import LoginForm
+from loginForm import LoginForm
 
 class MainWindow(qtw.QWidget, LoginForm):
 	def __init__(self):
 		super().__init__()
+        self.setupUi(LoginForm)
 
-		# add as any properties here...
+		#add as any properties here...
 		self.setWindowTitle('The title of main window')
 
 if __name__ == "__main__":
