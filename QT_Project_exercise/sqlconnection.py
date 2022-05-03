@@ -4,9 +4,9 @@ import mysql.connector
 def make_connection(user, password, db, host="localhost", port=3306):
   try:
     cnx = mysql.connector.connect(
-      user=user,
-      password=password,
-      db=db,
+      user="root",
+      password="xxxx",
+      db="test",
       host=host,
       port=port
     )
