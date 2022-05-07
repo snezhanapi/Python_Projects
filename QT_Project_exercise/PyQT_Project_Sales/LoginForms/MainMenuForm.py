@@ -9,76 +9,46 @@ class MainWindow(qtw.QMainWindow):
 	def __init__(self , *args, **kwargs):
 		super().__init__(*args, **kwargs)
 
-		self.setWindowTitle('')
-		self.setGeometry(200,200,300,300)
-
-		self.textedit = qtw.QTextEdit()
-		self.setCentralWidget(self.textedit)
-
-		self.add_menubar()
-		self.add_toolbar()
-		self.add_statusbar()
+		self.setWindowTitle('Sales Management')
+		self.setGeometry(200,200,600,400)
 
 		self.show()
+
+		self.add_menubar()
+		self.add_statusbar("You are not logged in!")
+		self.add_toolbar()
+
+
+	def add_statusbar(self,text):
+		s = qtw.QStatusBar(self)
+		self.setStatusBar(s)
+		s.showMessage(text)
 
 	def add_menubar(self):
 		# get the menu bar
 		menubar = self.menuBar()
 
 		# add menu items
-		file_menu = menubar.addMenu('&File')
-		edit_menu = menubar.addMenu('Edi&t')
+		sales_menu = menubar.addMenu('&Sales')
+		import_export_menu = menubar.addMenu('Import/Export')
 		help_menu = menubar.addMenu('He&lp')
 
 		# add actions
-		open_action = file_menu.addAction('Open')
-		save_action = file_menu.addAction('Save')
-
+		view_action = sales_menu.addAction('View')
+		enter_action = sales_menu.addAction('Enter sales')
+		search_action = sales_menu.addAction('Search sales')
+		import_action = import_export_menu.addAction("Import CSV")
+		export_action = import_export_menu.addAction("Export CSV")
 		# add separator
-		file_menu.addSeparator()
-
-		quit_action = file_menu.addAction('Quit', self.close)
-		undo_action = edit_menu.addAction('Undo', self.textedit.undo)
-
-		# create a QAction manually
-		redo_action = qtw.QAction('Redo', self)
-		redo_action.triggered.connect(self.textedit.redo)
-
-		# Actions, which opens custom dialog
-		edit_menu.addAction(redo_action)
-		# edit_menu.addAction('Set Font…', self.set_font)
-		# edit_menu.addAction('Settings…', self.show_settings)
-
+		sales_menu.addSeparator()
 	def add_toolbar(self):
 		toolbar = self.addToolBar('File')
 
-		toolbar.setMovable(True)
-		toolbar.setFloatable(True)
-		toolbar.setAllowedAreas(
-			qtc.Qt.TopToolBarArea |
-			qtc.Qt.BottomToolBarArea |
-			qtc.Qt.LeftToolBarArea
-		)
 
-		help_action = qtw.QAction(
-			self.style().standardIcon(qtw.QStyle.SP_DialogHelpButton),
-			'Help',
-			self,  # important to pass the parent!
-			# add signal
-			triggered=lambda: self.StatusBar().showMessage(
-					'Sorry, no help yet!'
-			)
-		)
-		toolbar.addAction(help_action)
-
-	def add_statusbar(self):
-		s = qtw.QStatusBar(self)
-		self.setStatusBar(s)
-		s.showMessage('Welcome to My Text Editor')
 
 if __name__ == '__main__':
 	app = qtw.QApplication(sys.argv)
 
 	window = MainWindow()
-	window.show()
+
 	sys.exit(app.exec())
