@@ -1,9 +1,10 @@
 import mysql.connector
 # from mysql.connector import connection
+#pip install configparser
 from configparser import ConfigParser
 
 
-class DB:
+class DB():
 	def __init__(self):
 		db_config = DB.read_db_config(filename='./config.ini', section='MYSQL')
 
@@ -46,8 +47,8 @@ class DB:
 
 		# prepare SQL query:
 		q = f"""
-			SELECT * FROM users
-				WHERE username=%s AND password=%s
+			SELECT * FROM salesperson
+				WHERE Email=%s AND PasswordID=%s
 		"""
 		# execute the query
 		c.execute(q,(user_name,password))
@@ -62,8 +63,8 @@ if __name__ == '__main__':
 	db = DB()
 
 	# let's use some hard-coded values for test:
-	user_name = 'Maria'
-	password = 'maria123'
+	user_name = 'snezhana@gmail.com'
+	password = 'Snezhana123'
 
 	if db.authenticate(user_name=user_name, password=password):
 		print('User is valid')
