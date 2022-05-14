@@ -4,9 +4,9 @@ import mysql.connector
 from configparser import ConfigParser
 
 
-class DB():
+class DB:
 	def __init__(self):
-		db_config = DB.read_db_config(filename='./config.ini', section='MYSQL')
+		db_config = DB.read_db_config(filename='../config.ini', section='MYSQL')
 
 		try:
 			self.cnx = mysql.connector.connect(
@@ -63,10 +63,10 @@ if __name__ == '__main__':
 	db = DB()
 
 	# let's use some hard-coded values for test:
-	user_name = 'snezhana@gmail.com'
-	password = 'Snezhana123'
+	user_name_test = 'snezhana@gmail.com'
+	password_test = 'Snezhana123'
 
-	if db.authenticate(user_name=user_name, password=password):
+	if db.authenticate( user_name=user_name_test, password=password_test):
 		print('User is valid')
 	else:
 		print('Invalid user name or password')

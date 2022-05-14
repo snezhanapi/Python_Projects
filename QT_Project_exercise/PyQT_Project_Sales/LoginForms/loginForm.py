@@ -1,5 +1,8 @@
 import sys
 from PyQt6.QtWidgets import (QApplication, QWidget, QPushButton, QLabel, QLineEdit, QGridLayout, QMessageBox)
+from db import DB
+from PyQt6 import QtCore as qtc
+
 
 class LoginForm(QWidget):
 	def __init__(self):
@@ -9,9 +12,9 @@ class LoginForm(QWidget):
 
 		layout = QGridLayout()
 
-		label_name = QLabel('<font size="4"> Username </font>')
+		label_name = QLabel('<font size="4"> Email </font>')
 		self.lineEdit_username = QLineEdit()
-		self.lineEdit_username.setPlaceholderText('Please enter your username')
+		self.lineEdit_username.setPlaceholderText('Please enter your email')
 		layout.addWidget(label_name, 0, 0)
 		layout.addWidget(self.lineEdit_username, 0, 1)
 
@@ -32,17 +35,26 @@ class LoginForm(QWidget):
 		layout.setRowMinimumHeight(2, 75)
 
 		self.setLayout(layout)
+		self.db = DB()
 
+	@qtc.pyqtSlot(bool)
 	def check_password(self):
 		msg = QMessageBox()
 
-		if self.lineEdit_username.text() == 'Username' and self.lineEdit_password.text() == '000':
-			msg.setText('Success')
+		if self.db.authenticate(user_name=self.lineEdit_username.text(), password=self.lineEdit_password.text()):
+			msg.setText('You are now logged in!')
+			msg.setWindowTitle("Success")
+			#msg.setIcon(qtw.QMessageBox.Information)
 			msg.exec()
 			app.quit()
 		else:
-			msg.setText('Incorrect Password')
+			msg.setText('Incorrect Password!')
+			msg.setWindowTitle("Warning")
+			#msg.setIcon(qtw.QMessageBox.Information)
+			#msg.setInformativeText("Some informative text")
 			msg.exec()
+
+
 	def exit_application(self):
 		msg_exit = QMessageBox()
 		msg_exit.setText('Do you want to close Sales Manager? ')
