@@ -6,15 +6,14 @@ from LoginForms.MainMenuForm import MainMenuWindow
 class MainWindow(qtw.QMainWindow, MainMenuWindow):
 	def __init__(self, *args, **kwargs):
 	    super(MainWindow, self).__init__(self, *args, **kwargs)
-        self.setupUi(self)
+        self.show()
 
 		#add as any properties here...
-
 
 if __name__ == "__main__":
   app = qtw.QApplication(sys.argv)
 
   main = MainWindow()
-  main.show()
+
 
   sys.exit(app.exec())
