@@ -1,6 +1,6 @@
 import sys
 from PyQt6 import QtWidgets as qtw
-from LoginForms import loginForm
+
 from LoginForms.MainMenuForm import MainMenuWindow
 
 class MainWindow(qtw.QMainWindow, MainMenuWindow):
