@@ -1,11 +1,11 @@
 import sys
 from PyQt6 import QtWidgets as qtw
 from LoginForms import loginForm
-from LoginForms import MainMenuForm
+from LoginForms.MainMenuForm import MainMenuWindow
 
-class MainWindow(qtw.QWidget, MainMenuForm):
+class MainWindow(qtw.QMainWindow, MainMenuWindow):
 	def __init__(self, *args, **kwargs):
-	    super().__init__(self, *args, **kwargs)
+	    super(MainWindow, self).__init__(self, *args, **kwargs)
         self.setupUi(self)
 
 		#add as any properties here...

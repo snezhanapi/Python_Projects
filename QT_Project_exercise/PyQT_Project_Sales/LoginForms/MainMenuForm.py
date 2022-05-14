@@ -4,7 +4,7 @@ from PyQt6 import QtCore as qtc
 from PyQt6 import QtGui as qtg
 
 
-class MainWindow(qtw.QMainWindow):
+class MainMenuWindow(qtw.QMainWindow):
 
 	def __init__(self , *args, **kwargs):
 		super().__init__(*args, **kwargs)
@@ -49,6 +49,6 @@ class MainWindow(qtw.QMainWindow):
 if __name__ == '__main__':
 	app = qtw.QApplication(sys.argv)
 
-	window = MainWindow()
+	window = MainMenuWindow()
 
 	sys.exit(app.exec())
