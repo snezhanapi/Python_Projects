@@ -6,7 +6,7 @@ from configparser import ConfigParser
 
 class DB:
 	def __init__(self):
-		db_config = DB.read_db_config(filename='./config.ini', section='MYSQL')
+		db_config = DB.read_db_config(filename='../config.ini', section='MYSQL')
 
 		try:
 			self.cnx = mysql.connector.connect(
@@ -20,7 +20,7 @@ class DB:
 			print(e)
 			exit()
 
-	def read_db_config(filename='./config.ini', section='MYSQL'):
+	def read_db_config(filename='../config.ini', section='MYSQL'):
 		""" Read database configuration file and return a dictionary object
 				:param filename: name of the configuration file
 				:param section: section of database configuration
