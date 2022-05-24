@@ -58,6 +58,17 @@ class DB:
 
 		# do something with the result
 		return True if res else False
+	#return sales
+	def view_sales(self):
+		c = self.cnx.cursor()
+		q = f"""
+					SELECT * FROM salesorder
+
+				"""
+		c.execute(q)
+		result = c.fetchone()
+		print(result)
+		return result
 
 if __name__ == '__main__':
 	db = DB()
