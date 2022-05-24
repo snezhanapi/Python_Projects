@@ -6,7 +6,7 @@ from configparser import ConfigParser
 
 class DB:
 	def __init__(self):
-		db_config = DB.read_db_config(filename='../config.ini', section='MYSQL')
+		db_config = DB.read_db_config(filename='./config.ini', section='MYSQL')
 
 		try:
 			self.cnx = mysql.connector.connect(

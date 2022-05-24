@@ -1,6 +1,6 @@
 import sys
 from PyQt6.QtWidgets import (QApplication, QWidget, QPushButton, QLabel, QLineEdit, QGridLayout, QMessageBox)
-from db import DB
+from LoginForms.db import DB
 from PyQt6 import QtCore as qtc
 
 
@@ -37,6 +37,7 @@ class LoginForm(QWidget):
 		self.setLayout(layout)
 		self.db = DB()
 
+
 	@qtc.pyqtSlot(bool)
 	def check_password(self):
 		msg = QMessageBox()
@@ -44,6 +45,7 @@ class LoginForm(QWidget):
 		if self.db.authenticate(user_name=self.lineEdit_username.text(), password=self.lineEdit_password.text()):
 			msg.setText('You are now logged in!')
 			msg.setWindowTitle("Success")
+
 			#msg.setIcon(qtw.QMessageBox.Information)
 			msg.exec()
 			app.quit()

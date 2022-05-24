@@ -2,7 +2,7 @@ import sys
 from PyQt6 import QtWidgets as qtw
 from PyQt6 import QtCore as qtc
 from PyQt6 import QtGui as qtg
-from loginForm import LoginForm
+from LoginForms.loginForm import LoginForm
 
 class MainMenuWindow(qtw.QMainWindow):
 
@@ -13,11 +13,11 @@ class MainMenuWindow(qtw.QMainWindow):
 		self.setGeometry(200,200,600,400)
 
 		self.show()
-
 		self.add_menubar()
 		self.add_statusbar("You are not logged in!")
 		self.add_toolbar()
 		self.open_login_form()
+
 
 
 	def add_statusbar(self,text):
@@ -45,8 +45,9 @@ class MainMenuWindow(qtw.QMainWindow):
 	def add_toolbar(self):
 		toolbar = self.addToolBar('File')
 	def open_login_form(self):
-		form = LoginForm()
-		form.show()
+		self.form = LoginForm()
+		self.form.show()
+
 
 
 if __name__ == '__main__':
